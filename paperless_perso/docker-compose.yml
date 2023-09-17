@@ -42,7 +42,7 @@ services:
     image: docker.io/library/postgres:15
     restart: unless-stopped
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - /data/paperless/pgdata/perso:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
@@ -64,8 +64,8 @@ services:
       timeout: 10s
       retries: 5
     volumes:
-      - data:/usr/src/paperless/data
-      - media:/usr/src/paperless/media
+      - /data/paperless/data/perso:/usr/src/paperless/data
+      - /data/paperless/media/perso:/usr/src/paperless/media
       - /data/paperless/export/perso:/usr/src/paperless/export
       - /data/paperless/consume/perso:/usr/src/paperless/consume
     environment:
@@ -91,8 +91,5 @@ services:
     restart: unless-stopped
 
 volumes:
-  data:
-  media:
-  pgdata:
   redisdata:
 
