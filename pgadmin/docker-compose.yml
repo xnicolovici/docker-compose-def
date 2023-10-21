@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    volumes:
+      - pgadmin4_lib:/var/lib/pgadmin
+    environment:
+      PGADMIN_DISABLE_POSTFIX: "None"
+      PGADMIN_DEFAULT_EMAIL: xavier@nicolovici.com
+    ports:
+      - "5050:80"
+
+volumes:
+  pgadmin4_lib:
